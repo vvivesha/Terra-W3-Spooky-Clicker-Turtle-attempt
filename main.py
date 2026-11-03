@@ -47,16 +47,17 @@ p.right(45)
 p.forward(50)
 p.penup()
 p.home()
-p.backward(75)
+p.backward(85)
 p.right(90)
-p.forward(75)  #might be too far down on the play button..?
+p.backward(25)  #might be too far down on the play button..?
 p.pendown()
-p.left(135)
-p.forward(25)
-p.left(45)
-p.forward(25)
-p.left(135)
 p.forward(50)
+p.left(120)
+p.forward(50)
+p.left(120)
+p.forward(50)
+#p.left(135)
+#p.forward(50)
 
 
 
