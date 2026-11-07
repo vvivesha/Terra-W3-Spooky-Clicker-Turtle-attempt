@@ -1,5 +1,6 @@
 import turtle
 import time
+game = "off"
 #switched over the VS Code app to code from this point on.
 
 turtle.bgcolor("black")
@@ -117,17 +118,22 @@ p.write("MENU", align = "center", font = ("Verdana", 25, "bold"))
 
 def play_pressed():
     play_triggered = "yes"
+    global game
     print("<game has begun>")
-
-if play_triggered == "yes":
     game = "on"
+
+turtle.Screen().listen()
+turtle.Screen().onkey(play_pressed, "p")  #so apparently it is case-sensitive to the point that a "P" would expect shift + P to activate the code...
+
+if play_pressed() == "yes":
     pen.bgcolor("gray")
 time.sleep(3)
 for countdown in range(3):
     time.sleep(1)
     seconds = 1
+    pen.setheading(0)
     pen.write("str(seconds)", align = "center", font = ("Impact", 30, "bold"))
-while game == "on":
+if game == "on":
     pen.goto(0,-250)
     pen.write("Use WASD to move!", align = "center", font = ("Courier New", 20, "normal"))
 
