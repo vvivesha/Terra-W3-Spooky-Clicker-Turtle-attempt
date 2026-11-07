@@ -1,4 +1,5 @@
 import turtle
+import time
 #switched over the VS Code app to code from this point on.
 
 turtle.bgcolor("black")
@@ -114,10 +115,21 @@ p.forward(25)
 p.color("white")
 p.write("MENU", align = "center", font = ("Verdana", 25, "bold"))
 
+def play_pressed():
+    play_triggered = "yes"
+    print("<game has begun>")
 
-#wip line of code below:
-click_play_range = range()
-
+if play_triggered == "yes":
+    game = "on"
+    pen.bgcolor("gray")
+time.sleep(3)
+for countdown in range(3):
+    time.sleep(1)
+    seconds = 1
+    pen.write("str(seconds)", align = "center", font = ("Impact", 30, "bold"))
+while game == "on":
+    pen.goto(0,-250)
+    pen.write("Use WASD to move!", align = "center", font = ("Courier New", 20, "normal"))
 
 pen.hideturtle()
 turtle.done()
@@ -127,7 +139,7 @@ turtle.done()
 #p.showturtle()
 #p.goto(0, 0)
 #p.fillcolor("green")  #why is there not a light green  :<
-p.color("green")
+#p.color("green")   #but that's a syntax error of a cmd...
 #    #moved smth from here can't recall what (begin fill..?)
 #p.penup()
 #    #p.goto(-250, 0) #used to be and still is commented out for a reason XD
