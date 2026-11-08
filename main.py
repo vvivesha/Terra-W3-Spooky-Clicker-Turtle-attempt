@@ -116,24 +116,35 @@ p.forward(25)
 p.color("white")
 p.write("MENU", align = "center", font = ("Verdana", 25, "bold"))
 
+def game_on():
+    global game
+    game = "on"
+    print("<game has begun>")
+    turtle.bgcolor("gray")
+    p.showturtle()
+    time.sleep(0.2)
+    p.setheading(0)
+    seconds = 3
+    for countdown in range(4):
+        p.clear()
+        time.sleep(1)
+        seconds -= 1
+        p.write(str(seconds), align = "center", font = ("Impact", 30, "bold"))
+
 def play_pressed():
     play_triggered = "yes"
-    global game
-    print("<game has begun>")
-    game = "on"
+    print("<pressed play>")
+    game_on()
+
+
 
 turtle.Screen().listen()
 turtle.Screen().onkey(play_pressed, "p")  #so apparently it is case-sensitive to the point that a "P" would expect shift + P to activate the code...
 
-if play_pressed() == "yes":
-    pen.bgcolor("gray")
-time.sleep(3)
-for countdown in range(3):
-    time.sleep(1)
-    seconds = 1
-    pen.setheading(0)
-    pen.write("str(seconds)", align = "center", font = ("Impact", 30, "bold"))
+
+    
 if game == "on":
+    pen.hideturtle()
     pen.goto(0,-250)
     pen.write("Use WASD to move!", align = "center", font = ("Courier New", 20, "normal"))
 
