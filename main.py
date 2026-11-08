@@ -1,5 +1,7 @@
 import turtle
 import time
+import random
+mystery_item = "unchosen"
 game = "off"
 #switched over the VS Code app to code from this point on.
 
@@ -69,7 +71,7 @@ p.left(120)
 p.forward(90)
 p.right(90)
 p.forward(50)
-p.write("Click to Play!", align = "left", font = ("Verdana", 15, "normal"))
+p.write("Press p to Play!", align = "left", font = ("Verdana", 15, "normal"))
 
 
 
@@ -116,6 +118,26 @@ p.forward(25)
 p.color("white")
 p.write("MENU", align = "center", font = ("Verdana", 25, "bold"))
 
+def item_randomizer():
+    pen.goto(0, -100)
+    pen.write("Rolling the clickable item...", align = "center", font = ("Impact", 80, "bold"))
+    time.sleep(0.84)
+    pen.clear()
+    items = ["A", "B", "C"]
+    for randomizer in range(12):
+        global mystery_item
+        p.clear()
+        time.sleep(0.07)
+        mystery_item = p.write(random.choice(items), align = "center", font = ("Impact", 100, "bold"))
+    if mystery_item == "A":
+        mystery_item = "PUMPKIN"
+    if mystery_item == "B":
+        mystery_item == "BLACK CAT"
+    if mystery_item == "C":
+        mystery_itme == "CANDY"
+    pen.write("You rolled... ", align = "center", font = ("Courier New", 25, "normal"))
+    pen.write(mystery_item, align = "left", font = ("Verdana", 30, "normal"))
+
 def game_on():
     global game
     game = "on"
@@ -124,17 +146,28 @@ def game_on():
     p.showturtle()
     time.sleep(0.2)
     p.setheading(0)
-    seconds = 3
-    for countdown in range(4):
+    seconds = 4
+    p.color("red")
+    for countdown in range(3):
         p.clear()
-        time.sleep(1)
+        p.color("red")
         seconds -= 1
-        p.write(str(seconds), align = "center", font = ("Impact", 30, "bold"))
+        p.hideturtle()
+        p.color("white")
+        p.goto(0, -100)
+        p.write(str(seconds), align = "center", font = ("Impact", 100, "bold"))
+        time.sleep(1)
+        p.item_randomizer()
 
 def play_pressed():
     play_triggered = "yes"
     print("<pressed play>")
     game_on()
+    p.clear()
+
+#add a green border-flash for fun if time allows!!
+
+
 
 
 
