@@ -16,33 +16,87 @@ def slow_print(text, delay):
         print(letter, flush = True, end = "")
         sleep(delay)
 
-print("WELCOME to:  Get Rich Before Halloween So You Can Buy a Good Costume Simulator")
+import turtle
+
+def upgrade_store(enter_or_exit):
+    pen.showturtle() #temporarily
+    turtle.bgcolor("black")
+    pen.color("orange")
+    pen.write(enter_or_exit + "ed store. Your budget is: $" + str(upkeep))
+    pen.goto(-200, 200)
+    pen.write("Upgrades Store!", align = "left", font = ("Impact", 15, "bold"))   #store title
+    pen.goto(-210, 195)  #store title underline dashed
+    #pen.clear()
+    #p.clear()
+    for formatting in range(8):
+        pen.pendown()
+        pen.forward(25)
+        pen.penup()
+        pen.forward(25)
+    #store's contents:
+    pen.goto(0, 0)  #not sure of this part just yet
+    pen.color("white")
+    pen.write("Dark/Light mode option: ", align = "center", font = ("Verdana", 20, "underline"))
+    pen.goto(-200, 200)
+    pen.write("Let\'s users choose the theme... unfortunately this feature doesn\'t work for you, the dev.", align = "left", font = ("Courier New", 15, "normal"))
+    pen.goto(0, 0)
+    pen.setheading(0)
+    pen.pendown()
+    pen.forward(100)
+    pen.left(90)
+    pen.foward(200)
+    pen.left(90)
+    pen.forward(200)
+    pen.left(90)
+    pen.forward(200)
+    pen.left(90)
+    pen.forward(100)
+    pen.penup()
+    pen.
+    pen.write("")
+
+
+turtle.Screen().listen()
+turtle.Screen().onkey(store, "q")
+
+
+
+time.sleep(1.5)
+slow_print("WELCOME TO.. ", 0.1)
 print(" ")
-more_wait = input("Enable fast mode?  TYPE:  y/n                (The introduction will go by *rapidly*; you'll still have to read to understand what is going on, if this is your first attempt at this game)  ")
-if more_wait == "y" or "Y":
-    wait_time = 2.5
-    print("<Alright, we'll take it a bit slower>")
-if more_wait == "n" or "N":
+slow_print("𓄿  Make-a-Sp00ky-Clicker-App-So-You-Can-Buy-a-Good-Costume-for ☠︎︎  Halloween ☠︎︎   Simulator  𓆙", 0.08)
+print(" ")
+print("<You have the option to make the intro go be rapidly, or a bit more slowly>")
+time.sleep(0.5)
+fast_mode = input("Enable fast mode?  Type: (y/n)")
+if fast_mode in ["y", "Y"]:
     wait_time = 1.5
-    slow_print("<Get ready!>")
+    delay_time = 0.01
+    print(" ")
+    slow_print("<Get ready!>", delay_time)
+if fast_mode in ["n", "N"]:
+    wait_time = 2.5
+    delay_time = 0.1
+    print(" ")
+    slow_print("<Alright, we'll take it a bit slower>", delay_time)
 for gap in range(5):
     print(" ")
 time.sleep(1.5)
-slow_print("Think of this game like a tycoon!", 0.01)
+slow_print("Think of this game like a tycoon!", delay_time)
 print(" ")
-slow_print("Your objective: ", 0.01)
+slow_print("Your objective: ", delay_time)
 print(" ")
-slow_print("Make a Spooky Clicker app --> get $$$ --> buy yourself a costume!", 0.01)
-time.sleep(1.5)
+slow_print("Make a Spooky Clicker app --> get $$$ --> buy yourself a costume!", delay_time)
+time.sleep(wait_time)
 print(" ")
 time.sleep(0.1)
 for gap in range(2):
     print(" ")
-slow_print("Today is... Thursday, October 29th, 2026", 0.01)
+slow_print("Today is... Thursday, October 29th, 2026", delay_time)
 print(" ")
-time.sleep(1.5)
+time.sleep(wait_time)
 print("Pssssst:  yep, you have THREE days before Halloween night. So you're definitely on a time crunch; good luck!!")
-time.sleep(1.5)
+time.sleep(wait_time)
 
 for gap in range(3):
     print(" ")
@@ -50,7 +104,7 @@ for gap in range(3):
 for gap in range(5):
     print("")
 
-slow_print("You will recieve a Spooky Clicker window: it will be how you earn $$$ for your Halloween costume. You have...  7  days. Goodluck!", 0.01)
+slow_print("You will recieve a Spooky Clicker window: it will be how you earn $$$ for your Halloween costume. You have...  7  days. Goodluck!", delay_time)
 for gap in range(3):
     print(" ")
 
@@ -62,51 +116,42 @@ for gap in range(3):
     print(" ")
 print("=========================================")
 print("-->  1)  contact everybody that you know")
-print("-->  2)  get a flashy marketing page")
+print("-->  2)  get a flashy marketing strategy")
 print("=========================================")
 for gap in range(3):
     print(" ")
 
 plan = input("Option 1 or 2?  ")
-time.sleep(1.5)
+time.sleep(wait_time)
 if plan == "1":
     print(" ")
     print(" ")
-    slow_print("You hit up all of your buddies at school. Nice that you spent time making the connections beforehand!", 0.005)
-    hype = hype + 15
-input("<Press ENTER to recieve your Spooky Clicker window>")
-
-import turtle
-
-def store(enter_or_exit):
-    pen,showturtle()
-    pen.goto(0,0)
-    pen.clear
-    p.clear
-    pen.color("orange")
-    pen.goto(-200, 200)
-    pen.write("STORE", align = "left", font = ("Impact", 30, "bold"))   #store title
-    pen.goto(-210, 195)  #store title underline dashed
-    for formatting in range(8):
-        pen.pendown()
-        pen.forward(25)
-        pen.down()
-        pen.forward(25)
-    #store's contents:
-    pen.goto(0, 0)
+    slow_print("You hit up all of your buddies at school. Nice that you spent time making the connections beforehand!", delay_time)
+    hype = int(hype) + 15
+if plan == "2":
+    print(" ")
+    print(" ")
+    slow_print("Woah! Nice advertisements! ", delay_time)
+input("<Press ENTER to see your stats>")
 
 
-turtle.Screen().listen()
-turtle.Screen().onkey(store, "q")
 
-
-slow_print("<You have... $15.00>", 0.008)
 print(" ")
-slow_print("Here is a brief guide to the game. Screenshot for convenience!")
+slow_print("Your current stats: ", 0.1)
+for gap in range(3):
+    print(" ")
+slow_print("MORALE: " + str(morale), 0.01)
+print(" ")
+slow_print("UPKEEP: " + str(upkeep), 0.01)
+print(" ")
+slow_print("HYPE: " + str(hype), 0.01)
+print(" ")
+slow_print("EARNINGS: " + str(earnings), 0.01)
+
 for gap in range(3):
     print(" ")
 
-slow_print("STATS:    (4 categories to keep track of)", 0.001)
+slow_print("STATS INFO:    (4 categories to keep track of)", delay_time)
 for gap in range(3):
     print(" ")
 print("MORALE:  this is your mental well-being! You start off with 50/100. Dip below 10 morale, and now you are dangerously depressed!!!")
@@ -120,26 +165,34 @@ input("<Press ENTER to continue>  (3/4)")
 print(" ")
 print("and finally...")
 print("EARNINGS:  THIS is the money that needs to grow to at least $50 by the end of the 3 days. (Else you'll be going trick-or-treating in rags!)")
-time.sleep(1)
+time.sleep(wait_time)
 print("You will start out with $0 under EARNINGS because you are spending your last $15 on getting this site up and going.")
 input("<Press ENTER to continue ()>  (4/4)")
 for gap in range(3):
     print(" ")
-slow_print("To visit the store, press 'q' on the separate window. To purchase an upgrade, type its corresponding number into the following box:  ", 0.01)
+slow_print("<You have... $15.00>", 0.1)
 print(" ")
-slow_print("Now I\'m going to make you visit the store with me :>  ", 0.01)
+slow_print("To visit the store, press 'q' on the separate window. To purchase an upgrade, type its corresponding number into the following box:  ", delay_time)
+print(" ")
+slow_print("Now I\'m going to make you visit the store with me :>  ", delay_time)
 store_visit_done = input("All done?  (y/n)")
 if store_visit_done == "y":
-    store(exit)
+    upgrade_store("enter")
 while vist_store == "true":
     buy = input("Pick a number, any number!  ")
     if buy not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
         for gap in range(3):
             print(" ")
-    slow_print("HEY... stop messing with me, please!!")
+    slow_print("HEY... stop messing with me, please!!", 0.1)
     print(" ")
     time.sleep(0.1)
     buy = input("Please pick an *acutal* option, and THEN we can discuss purchasing that upgrade.  ")
+
+
+
+
+
+
 
 
 
@@ -287,7 +340,7 @@ def game_on():
         p.color("white")
         p.goto(0, -100)
         p.write(str(seconds), align = "center", font = ("Impact", 100, "bold"))
-        time.sleep(4.2)
+    time.sleep(4.2)
         #item_randomizer()
 
 
@@ -307,9 +360,9 @@ def item_randomizer(options):
             if mystery_item == "A":
                 mystery_item = "PUMPKIN"
             if mystery_item == "B":
-                mystery_item == "BLACK CAT"
+                mystery_item = "BLACK CAT"
             if mystery_item == "C":
-                mystery_item == "CANDY"
+                mystery_item = "CANDY"
             p.write(random.choice(mystery_item), align = "center", font = ("Impact", 25, "bold"))
             time.sleep(0.1)
             p.clear()
