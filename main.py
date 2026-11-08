@@ -3,6 +3,7 @@ import time
 import random
 mystery_item = "unchosen"
 game = "off"
+mystery_item_chosen = "false"
 #switched over the VS Code app to code from this point on.
 
 turtle.bgcolor("black")
@@ -118,25 +119,6 @@ p.forward(25)
 p.color("white")
 p.write("MENU", align = "center", font = ("Verdana", 25, "bold"))
 
-def item_randomizer():
-    pen.goto(0, -100)
-    pen.write("Rolling the clickable item...", align = "center", font = ("Impact", 80, "bold"))
-    time.sleep(0.84)
-    pen.clear()
-    items = ["A", "B", "C"]
-    for randomizer in range(12):
-        global mystery_item
-        p.clear()
-        time.sleep(0.07)
-        mystery_item = p.write(random.choice(items), align = "center", font = ("Impact", 100, "bold"))
-    if mystery_item == "A":
-        mystery_item = "PUMPKIN"
-    if mystery_item == "B":
-        mystery_item == "BLACK CAT"
-    if mystery_item == "C":
-        mystery_itme == "CANDY"
-    pen.write("You rolled... ", align = "center", font = ("Courier New", 25, "normal"))
-    pen.write(mystery_item, align = "left", font = ("Verdana", 30, "normal"))
 
 def game_on():
     global game
@@ -156,8 +138,8 @@ def game_on():
         p.color("white")
         p.goto(0, -100)
         p.write(str(seconds), align = "center", font = ("Impact", 100, "bold"))
-        time.sleep(1)
-        p.item_randomizer()
+        time.sleep(4.2)
+        item_randomizer()
 
 def play_pressed():
     play_triggered = "yes"
@@ -167,7 +149,29 @@ def play_pressed():
 
 #add a green border-flash for fun if time allows!!
 
-
+def item_randomizer():
+    p.clear()
+    pen.goto(0, -100)
+    pen.write("Rolling the clickable item...", align = "center", font = ("Impact", 20, "bold"))
+    items = ["A", "B", "C"]
+    while mystery_item_chosen == "false":
+        for randomizer in range(12):
+            global mystery_item
+            mystery_item = random.choice(items)
+            if mystery_item == "A":
+                mystery_item = "PUMPKIN"
+            if mystery_item == "B":
+                mystery_item == "BLACK CAT"
+            if mystery_item == "C":
+                mystery_item == "CANDY"
+            p.write(random.choice(mystery_item), align = "center", font = ("Impact", 25, "bold"))
+            time.sleep(0.1)
+            p.clear()
+        mystery_item_chosen = "true"
+        break
+    time.sleep(1.5)
+    pen.write("You rolled... ", align = "center", font = ("Courier New", 25, "normal"))
+    pen.write(mystery_item, align = "left", font = ("Verdana", 30, "normal"))
 
 
 
