@@ -5,6 +5,9 @@ import random
 mystery_item = "unchosen"
 game = "off"
 mystery_item_chosen = "false"
+upgrade_option = 0
+stress = 100        #(of 100 max)
+engagement_level = 0
 #stats:
 hype = "0"
 upkeep = "30"  #this is your budget for upgrades; currently 30% of all earnings before uptime bills (yes, we will bill you for using our hosting services). You start off with $30 bucks!
@@ -17,6 +20,9 @@ def slow_print(text, delay):
         sleep(delay)
 
 import turtle
+#turtles:
+pen = turtle.Turtle()
+p = turtle.Turtle()
 
 def upgrade_store(enter_or_exit):
     pen.showturtle() #temporarily
@@ -44,7 +50,7 @@ def upgrade_store(enter_or_exit):
     pen.pendown()
     pen.forward(100)
     pen.left(90)
-    pen.foward(200)
+    pen.forward(200)
     pen.left(90)
     pen.forward(200)
     pen.left(90)
@@ -52,12 +58,110 @@ def upgrade_store(enter_or_exit):
     pen.left(90)
     pen.forward(100)
     pen.penup()
-    pen.
-    pen.write("")
+    pen.forward(100)
+    pen.left(90)
+    pen.forward(120)
+    pen.pendown()
+    pen.fillcolor("green")
+    pen.begin_fill()
+    pen.right(120) #first angle of acute triangle "view next upgrade" button thingy
+    pen.forward(30)
+    pen.right(120)
+    pen.forward(30)
+    pen.right(120)
+    pen.forward(30)
+    pen.end_fill() #end of the triangle next button thingy
+    pen.penup()
+    pen.setheading(0)
+    pen.right(90)
+    pen.forward(30)
+    pen.left(90)
+    pen.forward(10)
+    pen.write("Press n", align = "left", font = ("Courier New", 15, "normal"))  #keyboard button "n" triggers showing the next upgrade.
+
+def next_upgrade():
+    upgrade_option += 1
+    if upgrade_option > 3:
+        upgrade_option = 0
+    if upgrade_option == 1:
+        if upkeep >= 5:
+            #Engagement upgrade level goes up
+            engagement_level += 1
+            upkeep -= 5
+            if engagement_level in [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]:
+                hype += 10
+                p.showturtle()
+                p.goto(0, -200)
+                p.color("blue")
+                p.write("+ 10 hype!", align = "center", font = ("Impact", 15, "underline"))
+                return
+            else:
+                p.showturtle()
+                p.goto(0, -200)
+                p.color("blue")
+                p.write("Upgrade purchased!", align = "center", font = ("Courier New", 15, "normal"))
+                return
+        else:
+            p.showturtle()
+            p.goto(0, -200)
+            p.color("red")
+            p.write("Insufficient funds. See terminal for more details.", align = "center", font = ("Courier New", 15, "underline"))
+            print("<You can\'t afford this upgrade!!>")
+            poor_by = 5 - upkeep
+            print("*You need $" + poor_by + " more upkeep money*")
+            return
+    if upgrade_option == 2:
+        if upkeep >= 12:
+            #Offline-able clicker upgrade level goes up
+            upkeep -= 12
+            stress -=10
+            p.showturtle()
+            p.goto(0, -200)
+            p.color("blue")
+            p.write("+ 10 morale!", align = "center", font = ("Impact", 15, "underline"))
+            return
+        else:
+            p.showturtle()
+            p.goto(0, -200)
+            p.color("red")
+            p.write("Insufficient funds. See terminal for more details.", align = "center", font = ("Courier New", 15, "underline"))
+            print("<You can\'t afford this!")
+            poor_by = 12 - upkeep
+            print("*You need $" + poor_by + " more upkeep money*")
 
 
+    #["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    
+
+turtle.Screen().onkey(next_upgrade, "n")
 turtle.Screen().listen()
-turtle.Screen().onkey(store, "q")
+
+
+def game_on():
+    global game
+    game = "on"
+    print("<game has begun>")
+    turtle.bgcolor("gray")
+    p.showturtle()
+    time.sleep(0.2)
+    p.setheading(0)
+    seconds = 4
+    p.color("red")
+    for countdown in range(3):
+        p.clear()
+        p.color("red")
+        seconds -= 1
+        p.hideturtle()
+        p.color("white")
+        p.goto(0, -100)
+        p.write(str(seconds), align = "center", font = ("Impact", 100, "bold"))
+    time.sleep(4.2)
+        #item_randomizer()
+
+        
+
+turtle.Screen().onkey(upgrade_store, "q")
+turtle.Screen().listen()
 
 
 
@@ -175,18 +279,18 @@ print(" ")
 slow_print("To visit the store, press 'q' on the separate window. To purchase an upgrade, type its corresponding number into the following box:  ", delay_time)
 print(" ")
 slow_print("Now I\'m going to make you visit the store with me :>  ", delay_time)
-store_visit_done = input("All done?  (y/n)")
-if store_visit_done == "y":
+store_visit = input("All done?  (y/n)")
+if store_visit == "y":
     upgrade_store("enter")
-while vist_store == "true":
-    buy = input("Pick a number, any number!  ")
-    if buy not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
-        for gap in range(3):
-            print(" ")
-    slow_print("HEY... stop messing with me, please!!", 0.1)
-    print(" ")
-    time.sleep(0.1)
-    buy = input("Please pick an *acutal* option, and THEN we can discuss purchasing that upgrade.  ")
+#while store_visit == "y":
+   #buy = input("Pick a number, any number!  ")
+    #if buy not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+   #     for gap in range(3):
+    #        print(" ")
+   # slow_print("HEY... stop messing with me, please!!", 0.1)
+   # print(" ")
+   # time.sleep(0.1)
+  #  buy = input("Please pick an *acutal* option, and THEN we can discuss purchasing that upgrade.  ")
 
 
 
@@ -201,9 +305,7 @@ while vist_store == "true":
 turtle.bgcolor("black")
 print("Welcome to Spooky Clicker! Check out the separate window to see the visuals :>")
 
-#turtles:
-pen = turtle.Turtle()
-p = turtle.Turtle()
+
 
 #main/official colors (ideally..?):
 pen.color("orange")
@@ -319,29 +421,6 @@ def play_pressed():
     print("<pressed play>")
     game_on()
     p.clear()
-
-
-
-def game_on():
-    global game
-    game = "on"
-    print("<game has begun>")
-    turtle.bgcolor("gray")
-    p.showturtle()
-    time.sleep(0.2)
-    p.setheading(0)
-    seconds = 4
-    p.color("red")
-    for countdown in range(3):
-        p.clear()
-        p.color("red")
-        seconds -= 1
-        p.hideturtle()
-        p.color("white")
-        p.goto(0, -100)
-        p.write(str(seconds), align = "center", font = ("Impact", 100, "bold"))
-    time.sleep(4.2)
-        #item_randomizer()
 
 
 
