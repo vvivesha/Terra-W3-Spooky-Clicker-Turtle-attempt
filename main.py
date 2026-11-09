@@ -9,10 +9,10 @@ upgrade_option = 0
 stress = 100        #(of 100 max)
 engagement_level = 0
 #stats:
-hype = "0"
-upkeep = "30"  #this is your budget for upgrades; currently 30% of all earnings before uptime bills (yes, we will bill you for using our hosting services). You start off with $30 bucks!
-morale = "50"  #(you are stressed out.)
-earnings = "0"  #what matters in the end; it is spent on your Halloween costume.
+hype = 0
+upkeep = 30  #this is your budget for upgrades; currently 30% of all earnings before uptime bills (yes, we will bill you for using our hosting services). You start off with $30 bucks!
+morale = 50  #(you are stressed out.)
+earnings = 0  #what matters in the end; it is spent on your Halloween costume.
 
 def slow_print(text, delay):
     for letter in text:
@@ -25,12 +25,13 @@ pen = turtle.Turtle()
 p = turtle.Turtle()
 
 def upgrade_store(enter_or_exit):
-    pen.showturtle() #temporarily
-    turtle.bgcolor("black")
-    pen.color("orange")
-    pen.write(enter_or_exit + "ed store. Your budget is: $" + str(upkeep))
+    #------- - -- - -- - -- - -- -
+    pen.penup()
     pen.goto(-200, 200)
-    pen.write("Upgrades Store!", align = "left", font = ("Impact", 15, "bold"))   #store title
+    pen.pendown()
+    pen.write("Upgrades Store!", align = "left", font = ("Impact", 30, "bold"))   #store title
+    pen.penup()
+    pen.setheading(0)
     pen.goto(-210, 195)  #store title underline dashed
     #pen.clear()
     #p.clear()
@@ -39,28 +40,33 @@ def upgrade_store(enter_or_exit):
         pen.forward(25)
         pen.penup()
         pen.forward(25)
+    pen.penup()
     #store's contents:
-    pen.goto(0, 0)  #not sure of this part just yet
-    pen.color("white")
-    pen.write("Dark/Light mode option: ", align = "center", font = ("Verdana", 20, "underline"))
-    pen.goto(-200, 200)
-    pen.write("Let\'s users choose the theme... unfortunately this feature doesn\'t work for you, the dev.", align = "left", font = ("Courier New", 15, "normal"))
-    pen.goto(0, 0)
+    pen.penup()
+    pen.goto(0, 20)  #not sure of this part just yet
+    pen.color("black")
+   #------------------------------------
+    pen.right(90)
+    pen.forward(200)
+    #===================================
     pen.setheading(0)
     pen.pendown()
-    pen.forward(100)
+    pen.fillcolor("white")
+    pen.begin_fill()
+    pen.forward(150)
     pen.left(90)
-    pen.forward(200)
+    pen.forward(300)
     pen.left(90)
-    pen.forward(200)
+    pen.forward(300)
     pen.left(90)
-    pen.forward(200)
+    pen.forward(300)
     pen.left(90)
-    pen.forward(100)
+    pen.forward(150)
+    pen.end_fill()
     pen.penup()
-    pen.forward(100)
+    pen.forward(150)
     pen.left(90)
-    pen.forward(120)
+    pen.forward(170)
     pen.pendown()
     pen.fillcolor("green")
     pen.begin_fill()
@@ -77,10 +83,52 @@ def upgrade_store(enter_or_exit):
     pen.forward(30)
     pen.left(90)
     pen.forward(10)
-    pen.write("Press n", align = "left", font = ("Courier New", 15, "normal"))  #keyboard button "n" triggers showing the next upgrade.
+    pen.setheading(0)
+    pen.right(180)
+    pen.forward(30)
+    pen.write("Press n", align = "right", font = ("Courier New", 15, "normal"))  #keyboard button "n" triggers showing the next upgrade.
+    pen.setheading(0)
+    pen.goto(0, 0)
+    pen.right(90)
+    pen.forward(50)
+    pen.pendown()
+    pen.color("black")
+    pen.setheading(0)
+    pen.right(180)
+    pen.forward(100)
+    pen.right(90)
+    pen.forward(50)
+    pen.write("Buy it: gain 10 hype!", align = "left", font = ("Courier New", 15, "normal"))
+    pen.penup()
+    pen.goto(0, -200)
+    #store's contents:
+    pen.penup()
+    pen.goto(0, 20)  #not sure of this part just yet
+    pen.color("black")
+    pen.pendown()
+    pen.write("Dark/Light mode option: ", align = "center", font = ("Courier New", 15, "underline"))
+    pen.penup()
+    pen.right(90)
+    pen.forward(200)
+    #===================================
+    pen.penup()
+    pen.setheading(0)
+    pen.goto(0, 0)
+    pen.right(90)
+    pen.forward(200)
+    pen.showturtle() #temporarily
+    turtle.bgcolor("black")
+    pen.color("orange")
+    pen.pendown()
+    pen.write(enter_or_exit + "ed store. Your budget is: $" + str(upkeep))
+    pen.penup()
 
 def next_upgrade():
-    upgrade_option += 1
+    global upgrade_option
+    global engagement_level
+    global hype
+    global stress
+    global upkeep
     if upgrade_option > 3:
         upgrade_option = 0
     if upgrade_option == 1:
@@ -118,7 +166,7 @@ def next_upgrade():
             p.showturtle()
             p.goto(0, -200)
             p.color("blue")
-            p.write("+ 10 morale!", align = "center", font = ("Impact", 15, "underline"))
+            p.write("+ 10 morale and hype!", align = "center", font = ("Impact", 15, "underline"))
             return
         else:
             p.showturtle()
@@ -271,15 +319,15 @@ print("and finally...")
 print("EARNINGS:  THIS is the money that needs to grow to at least $50 by the end of the 3 days. (Else you'll be going trick-or-treating in rags!)")
 time.sleep(wait_time)
 print("You will start out with $0 under EARNINGS because you are spending your last $15 on getting this site up and going.")
-input("<Press ENTER to continue ()>  (4/4)")
+input("<Press ENTER to continue>  (4/4)")
 for gap in range(3):
     print(" ")
 slow_print("<You have... $15.00>", 0.1)
 print(" ")
-slow_print("To visit the store, press 'q' on the separate window. To purchase an upgrade, type its corresponding number into the following box:  ", delay_time)
-print(" ")
 slow_print("Now I\'m going to make you visit the store with me :>  ", delay_time)
-store_visit = input("All done?  (y/n)")
+print(" ")
+print("redirecting you to upgrades store...")
+store_visit = "y"
 if store_visit == "y":
     upgrade_store("enter")
 #while store_visit == "y":
@@ -376,24 +424,23 @@ def customer_screen():
     p.forward(50)
     p.right(45)
     p.forward(100)
-p.right(45)
-p.forward(50)
-p.right(90)  #this and the other line, below to make a rounded button shape
-p.forward(50)  #this and the other line, above to make a rounded button shape
-p.end_fill()
-
+    p.right(45)
+    p.forward(50)
+    p.right(90)  #this and the other line, below to make a rounded button shape
+    p.forward(50)  #this and the other line, above to make a rounded button shape
+    p.end_fill()
 #menu button's text
-p.penup()
-p.hideturtle()
-p.setheading(0)
-p.right(90)
-p.forward(25)
-p.setheading(0)
-p.forward(50)
-p.right(90)
-p.forward(25)
-p.color("white")
-p.write("MENU", align = "center", font = ("Verdana", 25, "bold"))
+    p.penup()
+    p.hideturtle()
+    p.setheading(0)
+    p.right(90)
+    p.forward(25)
+    p.setheading(0)
+    p.forward(50)
+    p.right(90)
+    p.forward(25)
+    p.color("white")
+    p.write("MENU", align = "center", font = ("Verdana", 25, "bold"))
 
 def play_pressed():
     play_triggered = "yes"
@@ -403,7 +450,7 @@ def play_pressed():
 
 #turtle.Screen().listen()
 turtle.Screen().onkey(play_pressed, "p")  #so apparently it is case-sensitive to the point that a "P" would expect shift + P to activate the code...
-
+turtle.Screen().listen()
 
 
 
@@ -414,9 +461,9 @@ turtle.Screen().onkey(play_pressed, "p")  #so apparently it is case-sensitive to
 #got rid  of a useless def function because it was jumbling up on the turtle output window.
 
 
-pen.write("Check the terminal and input a number. Then, return to this window  :)  (1-3) ", align = "center", font = ("Courier New", 15, "normal"))
-input = slow_print("Pick a number, 1-3.", 0.01)
-item_randomizer(input)
+#pen.write("Check the terminal and input a number. Then, return to this window  :)  (1-3) ", align = "center", font = ("Courier New", 15, "normal"))
+#input = slow_print("Pick a number, 1-3.", 0.01)
+#item_randomizer(input)
 
 
 
@@ -424,39 +471,12 @@ item_randomizer(input)
 
 
     
-if game == "on":
-    pen.hideturtle()
-    pen.goto(0,-250)
-    pen.write("Use WASD to move!", align = "center", font = ("Courier New", 20, "normal"))
+#if game == "on":
+  #  pen.hideturtle()
+   # pen.goto(0,-250)
+  #  pen.write("Use WASD to move!", align = "center", font = ("Courier New", 20, "normal"))
 
 pen.hideturtle()
 turtle.done()
 
 
-#A DOORWAY!!
-#p.showturtle()
-#p.goto(0, 0)
-#p.fillcolor("green")  #why is there not a light green  :<
-#p.color("green")   #but that's a syntax error of a cmd...
-#    #moved smth from here can't recall what (begin fill..?)
-#p.penup()
-#    #p.goto(-250, 0) #used to be and still is commented out for a reason XD
-#p.goto(0, -150)
-#p.begin_fill()
-#    #p.forward(100) #used to be commented out
-#    #p.left(45) #used to be commented out
-#p.setheading(0)
-#p.pendown()
-#p.left(45)
-#p.forward(50)
-#p.left(45)  #dupe
-#p.forward(100)
-#p.right(45)
-#p.forward(50)
-#p.right(90)
-#p.forward(50)
-#p.right(45)
-#p.forward(100)
-#p.right(45)
-#p.forward(50)
-#p.end_fill()
