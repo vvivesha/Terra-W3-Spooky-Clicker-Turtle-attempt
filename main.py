@@ -136,27 +136,27 @@ def next_upgrade():
 turtle.Screen().onkey(next_upgrade, "n")
 turtle.Screen().listen()
 
-
-def game_on():
-    global game
-    game = "on"
-    print("<game has begun>")
-    turtle.bgcolor("gray")
-    p.showturtle()
-    time.sleep(0.2)
-    p.setheading(0)
-    seconds = 4
-    p.color("red")
-    for countdown in range(3):
-        p.clear()
-        p.color("red")
-        seconds -= 1
-        p.hideturtle()
-        p.color("white")
-        p.goto(0, -100)
-        p.write(str(seconds), align = "center", font = ("Impact", 100, "bold"))
-    time.sleep(4.2)
-        #item_randomizer()
+#commented out this because it is no longer needed for this week's version of this project. (clutters the turtle window, too)
+#def game_on():
+   # global game
+   # game = "on"
+   # print("<game has begun>")
+   # turtle.bgcolor("gray")
+   # p.showturtle()
+   # time.sleep(0.2)
+   # p.setheading(0)
+   # seconds = 4
+   # p.color("red")
+  #  for countdown in range(3):
+   #     p.clear()
+    #    p.color("red")
+   #     seconds -= 1
+    #    p.hideturtle()
+     #   p.color("white")
+   #     p.goto(0, -100)
+   #     p.write(str(seconds), align = "center", font = ("Impact", 100, "bold"))
+  #  time.sleep(4.2)
+   #     #item_randomizer()
 
         
 
@@ -298,102 +298,84 @@ if store_visit == "y":
 
 
 
-
-
+def customer_screen():
 #switched over the VS Code app to code from this point on.
-
-turtle.bgcolor("black")
-print("Welcome to Spooky Clicker! Check out the separate window to see the visuals :>")
-
-
-
+    turtle.bgcolor("black")
+    print("Customer's screen ===>  Welcome to Spooky Clicker! Check out the separate window to see the visuals :>")
 #main/official colors (ideally..?):
-pen.color("orange")
-p.color("red")
-
+    pen.color("orange")
+    p.color("red")
 #for a cool intro of sorts!
-p.hideturtle()
-
+    p.hideturtle()
 #turtle window's title
-turtle.title("Spooky Clicker")
-
+    turtle.title("Spooky Clicker")
 #title
-pen.penup()
-pen.goto(-200, 200)
-pen.write("Spooky Clicker", align = "left", font = ("Impact", 30, "bold"))
-
-#title styling
-pen.penup()
-pen.goto(-210, 195)
-for formatting in range(8):
-    pen.pendown()
-    pen.forward(25)
     pen.penup()
-    pen.forward(25)
-
-
-
-
+    pen.goto(-200, 200)
+    pen.write("Spooky Clicker", align = "left", font = ("Impact", 30, "bold"))
+#title styling
+    pen.penup()
+    pen.goto(-210, 195)
+    for formatting in range(8):
+        pen.pendown()
+        pen.forward(25)
+        pen.penup()
+        pen.forward(25)
 #play button circle shape attempt
-p.penup()
-p.color("white")
-p.goto(-150, 0)
-p.goto(-70, 0)
-p.dot(80, "green")
-
+    p.penup()
+    p.color("white")
+    p.goto(-150, 0)
+    p.goto(-70, 0)
+    p.dot(80, "green")
 #inner play button (triangle)
-p.color("white")
-p.pensize(15)
-#p.fillcolor("white")    #fills in weirdly
-#p.begin_fill()
-p.penup()
-p.home()
-p.backward(80)  #85
-p.right(90)
-p.backward(12.5)  #might be too far down on the play button..?    #25
-p.pendown()
-p.forward(25)   #50
-p.left(120)
-p.forward(25)   #50
-p.left(120)
-p.forward(25)  #50
-#p.end_fill()
-
+    p.color("white")
+    p.pensize(15)
+    #p.fillcolor("white")    #fills in weirdly
+    #p.begin_fill()
+    p.penup()
+    p.home()
+    p.backward(80)  #85
+    p.right(90)
+    p.backward(12.5)  #might be too far down on the play button..?    #25
+    p.pendown()
+    p.forward(25)   #50
+    p.left(120)
+    p.forward(25)   #50
+    p.left(120)
+    p.forward(25)  #50
+    #p.end_fill()
 #"Click to Play" message
-#p.hideturtle()
-p.penup()
-p.left(120)
-p.forward(90)
-p.right(90)
-p.forward(50)
-p.write("Press p to Play!", align = "left", font = ("Verdana", 15, "normal"))
-
-
-
+    #p.hideturtle()
+    p.penup()
+    p.left(120)
+    p.forward(90)
+    p.right(90)
+    p.forward(50)
+    p.write("Press p to Play!", align = "left", font = ("Verdana", 15, "normal"))
 #menu button thingy ma jiggy 2
-p.showturtle()
-p.goto(0, 0)
-p.fillcolor("green")  #why is there not a light green  :<
-p.color("green")
-#moved smth from here can't recall what (begin fill..?)
-p.penup()
-#p.goto(-250, 0) #used to be and still is commented out for a reason XD
-p.goto(0, -150)
-p.begin_fill()
-#p.forward(100) #used to be commented out
-#p.left(45) #used to be commented out
-p.setheading(0)
-p.pendown()
-#p.left(45)
-#p.forward(50)
-#p.right(45)  #dupe
-p.forward(100)
-p.right(45)
-p.forward(50)
-p.right(90)
-p.forward(50)
-p.right(45)
-p.forward(100)
+    p.showturtle()
+    p.goto(0, 0)
+    p.fillcolor("green")  #why is there not a light green  :<
+    p.color("green")
+    #moved smth from here can't recall what (begin fill..?)
+    p.penup()
+    #p.goto(-250, 0) #used to be and still is commented out for a reason XD
+    p.goto(0, -150)
+    p.begin_fill()
+    #p.forward(100) #used to be commented out
+    #p.left(45) #used to be commented out
+    p.setheading(0)
+    p.pendown()
+    #p.left(45)
+    #p.forward(50)
+    #p.right(45)  #dupe
+    p.forward(100)
+    p.right(45)
+    p.forward(50)
+    p.right(90)
+    p.forward(50)
+    p.right(45)
+    p.forward(100)
 p.right(45)
 p.forward(50)
 p.right(90)  #this and the other line, below to make a rounded button shape
@@ -413,43 +395,24 @@ p.forward(25)
 p.color("white")
 p.write("MENU", align = "center", font = ("Verdana", 25, "bold"))
 
-#turtle.Screen().listen()
-turtle.Screen().onkey(play_pressed, "p")  #so apparently it is case-sensitive to the point that a "P" would expect shift + P to activate the code...
-
 def play_pressed():
     play_triggered = "yes"
     print("<pressed play>")
     game_on()
     p.clear()
 
+#turtle.Screen().listen()
+turtle.Screen().onkey(play_pressed, "p")  #so apparently it is case-sensitive to the point that a "P" would expect shift + P to activate the code...
+
+
+
 
 
 #add a green border-flash for fun if time allows!!
 
-def item_randomizer(options):
-    p.clear()
-    pen.goto(0, -100)
-    pen.write("Rolling the clickable item...", align = "center", font = ("Impact", 20, "bold"))
-    items = ["A", "B", "C"]
-    mystery_item_chosen = "false"
-    while mystery_item_chosen == "false":
-        for randomizer in range(12):
-            global mystery_item
-            mystery_item = random.choice(items)
-            if mystery_item == "A":
-                mystery_item = "PUMPKIN"
-            if mystery_item == "B":
-                mystery_item = "BLACK CAT"
-            if mystery_item == "C":
-                mystery_item = "CANDY"
-            p.write(random.choice(mystery_item), align = "center", font = ("Impact", 25, "bold"))
-            time.sleep(0.1)
-            p.clear()
-        mystery_item_chosen = "true"
-        break
-    time.sleep(1.5)
-    pen.write("You rolled... ", align = "center", font = ("Courier New", 25, "normal"))
-    pen.write(mystery_item, align = "left", font = ("Verdana", 30, "normal"))
+
+#got rid  of a useless def function because it was jumbling up on the turtle output window.
+
 
 pen.write("Check the terminal and input a number. Then, return to this window  :)  (1-3) ", align = "center", font = ("Courier New", 15, "normal"))
 input = slow_print("Pick a number, 1-3.", 0.01)
