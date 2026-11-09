@@ -5,13 +5,13 @@
 
 
 ## How to access:
-- Go to the corresponding release page.
+- Go to the corresponding release page. (https://github.com/vvivesha/Terra-W3-Spooky-Clicker-Turtle-attempt/releases/tag/v1.0.0)
 - Find and download the main.exe file.
 - Run it, play, and enjoy my first-ever-clicker-Python-game!!
 
 ## How to play:
 - *to be updated as progress is made on this project. (11/2/26)
-- go to the release page! (https://github.com/vvivesha/Terra-W3-Spooky-Clicker-Turtle-attempt/releases/tag/v1.0.0)
+- follow in-game prompts! 
 - follow its instructions (download main.exe and run it!)
 - enjoy!
 
